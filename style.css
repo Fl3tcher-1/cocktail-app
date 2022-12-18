@@ -3,12 +3,24 @@ body{
     background-color: black;
 }
 
+h2{
+    color: aquamarine;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* ******************************* SEARCH BAR************************* */
 #cocktails{
+    z-index: 1;
     margin-top: 50px;
     margin-left: 50%;
     margin-bottom: 15px;
+    position: sticky;
+    top: 20px;
 }
 
+/* ****************************** GRID LAYOUT****************************** */
 .cocktail, .container{
 
     display: flex;
@@ -17,50 +29,58 @@ body{
     flex-direction: column;
     background-color: black;
     color: antiquewhite;
-    /* padding: 10px; */
-    /* gap: 5px; */
 }
 
 .gridContainer{
     display: flex;
     justify-content: center;
-    /* width: 600px; */
+   
 }
 
 .grid{
     color: aliceblue;
+    width: 600px;
+ 
+}
+
+.gridCocktails{
     display: grid;
-    /* grid-template-areas: 
-    "image header "
-    "image list"
-    ; */
     grid-template-columns: 50% 50%;
-    grid-template-rows: 150xp 150px 150px;
-
-    width: 500px;
-    /* height: 350px; */
-    
-    
+    gap: 5px;
 }
 
+
+/* ********************* LIST ****************************/
 ul{
-    /* display: flex;
-    justify-content: center; */
-    margin: 3px;
     padding: 0;
+    margin: 5px;
     width: 450px;
-    /* column-width: 200px; */
-    /* column-count: 5; */
+    column-width: 200px;
 }
 
+li{
+    list-style-type: none;
+    padding: 3px;
+}
+
+
+/* **************************IMAGE***************** */
 img{
-    width: 80%;
+    width: 90%;
     height: auto;
-    /* max-width: 25%; */
-    /* height: auto; */
     margin: 10px;
     padding: 5px;
     grid-row: 1/8;
 }
 
+/* *********************BLUR***************** */
 
+.blur{
+    filter: blur(10px);
+}
+
+.list{
+    /* height: 10%; */
+    filter: blur(0px);
+    transition: filter 0.5s;
+}
