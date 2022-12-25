@@ -1,5 +1,7 @@
 This is a personal project that uses JS in order to fetch and consume a public api containing cocktails
 
+on load or refresh the website will return a random cocktail to the user
+
 The user is able to use the search bar to search for a cocktail-- where we will call the api and display matching results, with the name, ingredients and method to create back to the user
 
 this project will also incorporate google ad sense and will allow users to pick between metric and imperial measures

@@ -1,4 +1,4 @@
-
+init()
 
 function handleData(data){
 
@@ -13,6 +13,13 @@ data.drinks.forEach(element => {
     makeDivs(nonNUll)
 
 });
+}
+
+function init(){
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+    .then( response => response.json())
+    .then(data => handleData(data))
+    .catch(error => console.error(error))
 }
 
 function makeDivs(drink){
@@ -53,47 +60,14 @@ function makeDivs(drink){
     
     // joins array items into list elements
     var htmlList = listItems.map(item =>{
-        return '<li>' +item + '</li>'
+        //returns items after splitting into seperate lists in order to use multiple colours
+        return '<li class="listItems1">' +item.split("<br>")[0] + '</li> <li class="listItems2">' +item.split("<br>")[1] + '</li>'
     }).join('')
 
-    // console.log(htmlList)
     list.innerHTML = htmlList
 
     div.appendChild(list)
-
-    // drink.forEach(property => {
-    //     div.className = 'cocktail'
-    //     let img = document.createElement('img')
-    //     let ul = document.createElement('ul')
-    //     // console.log(img)
-
-    //     if (property[0] == "strDrink" ){
-    //         div.id = property[1]
-    //         let h3 = document.createElement('h3')
-    //         cocktailName = property[1]
-    //         h3.textContent = property[1]
-    //         div.appendChild(h3)
-
-    //     } if(property[0] =="strDrinkThumb"){
-    //         img.setAttribute("src", `${property[1]}` )
-    //         img.setAttribute("alt", `${cocktailName}`)
-    //         img.id = div.id
-    //         div.appendChild(img)
-            
-    //     } else{
-
-    //         //checks for categories to ignore
-    //         if(property[0] !=="strInstructionsDE" && property[0] !== "strInstructionsIE" && property[0]!="strInstructionsIT" && property[0]!= "idDrink" && property[0]!= "strDrink"
-    //          && property[0]!= "strImageSource" && property[0] != "strImageAttribution" && property[0] != "strCreativeCommonsConfirmed" && property[0]!= "dateModified" && property[0] != "strVideo"){
-    //             // div.textContent = `${property[0]} :  ${property[1]}`
-    //             ul.textContent = `${property[0].replace("str", "")} :  ${property[1]}`
-    //             div.appendChild(ul)
-    //         }
-    //     }
-        
-    // })
     container.appendChild(div)
-    // drink.forEach(property => console.log(property))
     
 }
 
@@ -119,6 +93,8 @@ function getCockatils (cocktail){
     .then(data => handleData(data))
     
     .catch(error => console.error(error))
+
+    document.getElementById('cocktail').value =""
 
 }
 
@@ -151,4 +127,9 @@ window.addEventListener("scroll", (e)=>{
 
    
 })
+
+
+
+
+
 

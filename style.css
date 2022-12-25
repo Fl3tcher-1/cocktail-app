@@ -84,3 +84,7 @@ img{
     filter: blur(0px);
     transition: filter 0.5s;
 }
+
+.listItems1{
+    color: aquamarine;
+}
