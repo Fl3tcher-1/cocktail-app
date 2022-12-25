@@ -1,26 +1,44 @@
 init()
 
-function handleData(data){
+// ******************************************************INIT*******************************************************************8
+function init(){
 
+    removeCocktails()
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+    .then( response => response.json())
+    .then(data => handleData(data))
+    .catch(error => console.error(error))
+}
+
+// ******************************************************REMOVE DRINKS*******************************************************************8
+//remove existing cocktails
+function removeCocktails(){
+    let cocktails = document.getElementsByClassName('gridCocktails')
+    console.log(cocktails)
+    if( cocktails.length !==0){
+        console.log(cocktails.item(0))
+        for(let i =0; i <cocktails.length;){
+            console.log(cocktails.length)
+            cocktails.item(0).remove()
+        }
+   
+    }
+}
+
+// ******************************************************HANDLE DATA*******************************************************************
+function handleData(data){
     //for every element get the key:value pairs and only return pairs with no null values
 data.drinks.forEach(element => {
     // console.log( Object.values(element).filter(value => value !=null))
     let entries = Object.entries(element)
 
     let nonNUll = entries.filter(item => item[1] != null)
-
-
     makeDivs(nonNUll)
 
 });
 }
 
-function init(){
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
-    .then( response => response.json())
-    .then(data => handleData(data))
-    .catch(error => console.error(error))
-}
+// ******************************************************MAKE COCKTAIL DIVS*******************************************************************8
 
 function makeDivs(drink){
     let listItems =[]
@@ -71,38 +89,25 @@ function makeDivs(drink){
     
 }
 
+// ******************************************************FETCH DATA*******************************************************************8
 //fetches data from an api and sends to a function when all data is fetched
-function getCockatils (cocktail){
+function getCocktails (cocktail){
 
-    // if there are any existing cocktails-- remove them before sending a fetch request
-    let cocktails = document.getElementsByClassName('gridCocktails')
-    if( cocktails.length !==0){
-        console.log(cocktails.item(0))
-        for(let i =0; i <cocktails.length;){
-            console.log(cocktails.length)
-            cocktails.item(0).remove()
-        }
-   
-    }
+ removeCocktails()
 
-     cocktail = document.getElementById('cocktail').value
+    cocktail = document.getElementById('cocktail').value
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
     .then(response => response.json())
-    
     .then(data => handleData(data))
-    
     .catch(error => console.error(error))
 
     document.getElementById('cocktail').value =""
 
 }
 
-
-// *********************** SCROLL BLUR*****************
-
+// ******************************************************SCROLL BLUR*******************************************************************8
 var timer
-
 // when the user scrolls it blurs the screen, on 100ms of scroll release it unblurs
 window.addEventListener("scroll", (e)=>{
     clearTimeout(timer)

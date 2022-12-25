@@ -7,3 +7,5 @@ The user is able to use the search bar to search for a cocktail-- where we will 
 this project will also incorporate google ad sense and will allow users to pick between metric and imperial measures
 
 this project may incorporate user authenitication in order to allow them to view past results
+
+this project may also allow the user to search different categories e.g. shot, cocktail, ordinary drink etc...
