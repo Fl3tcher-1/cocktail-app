@@ -28,20 +28,19 @@ function removeCocktails() {
 
 // ******************************************************HANDLE DATA*******************************************************************
 function handleData(data) {
-    console.log(data)
     //for every element get the key:value pairs and only return pairs with no null values
     data.drinks.forEach(element => {
         // console.log( Object.values(element).filter(value => value !=null))
         let entries = Object.entries(element)
         let nonNUll = entries.filter(item => item[1] != null)
         makeDivs(nonNUll)
-
     });
 }
 
 // used when fetch request only returns a cocktail name and an image, then it makes another fetch request to get full details
 function handleSmallData(data){
 
+// goes through data and fetches full data for every cocktail
 data.drinks.forEach(drink =>{
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink.strDrink}`)
     .then(response => response.json())
@@ -144,9 +143,6 @@ if (search === 'non-alcoholic') {
     .then(data => handleSmallData(data))
     .catch(error => console.error(error))
 }   
-
-
-
     document.getElementById('cocktail').value = ""
 }
 
