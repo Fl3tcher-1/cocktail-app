@@ -3,22 +3,55 @@ body{
     background-color: black;
 }
 
+
 h2{
-    color: aquamarine;
+    color: rgb(127, 255, 212);
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
+/* ********************************NAV BAR *********************************************8 */
+
+nav{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    gap: 1px;
+    margin-bottom: 5px;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+
+.home, .info, .profile, .contact{
+    min-width: 60px;
+    max-width: 8%;
+    max-height: 4vh;
+    min-height: 25px;
+}
+
+.home:hover, .info:hover, .profile:hover, .contact:hover{
+    transform: scale(1.1);
+   font-size: larger;
+}
+
+
 /* ******************************* SEARCH BAR************************* */
 #cocktails{
+    display: flex;
+    justify-content: center;
+    /* gap: 5px; */
     z-index: 1;
-    margin-top: 50px;
-    margin-left: 50%;
+    margin-top: 0;
+    /* margin-top: 25px; */
+    /* margin-left: 50%; */
     margin-bottom: 15px;
     position: sticky;
-    top: 20px;
+    top: 30px;
 }
+
+
 
 /* ****************************** GRID LAYOUT****************************** */
 .cocktail, .container{
@@ -31,6 +64,16 @@ h2{
     color: antiquewhite;
 }
 
+.text{
+    color: aliceblue;
+    margin-left: 0;
+
+}
+
+#lorem{
+    text-align: center;
+}
+
 .gridContainer{
     display: flex;
     justify-content: center;
@@ -40,7 +83,7 @@ h2{
 .grid{
     color: aliceblue;
     width: 600px;
- 
+
 }
 
 .gridCocktails{
@@ -82,7 +125,7 @@ img{
 .list{
     /* height: 10%; */
     filter: blur(0px);
-    transition: filter 0.5s;
+    transition: filter 0.25s;
 }
 
 .listItems1{

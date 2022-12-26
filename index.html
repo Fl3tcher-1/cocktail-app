@@ -8,20 +8,38 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <button class="home" onclick="init()">HOME</button>
-    </nav>
+        <nav>
+            <button class="home" onclick="init()">Home</button>
+            <button class="info">Info</button>
+            <button class="profile">Profile</button>
+            <button class="contact">Contact</button>
+        </nav>
+        <form id="cocktails" action="javascript:void(0)">
+            <!-- <button class="home" onclick="init()">Home</button> -->
     
-    <form id="cocktails" action="javascript:void(0)">
-        <input type="text" id="cocktail" placeholder="enter cocktail here">
-        <input type="submit" value="submit" onclick="getCocktails()">
-    </form>
-    
-    <div id="container" class="container">
-    </div>
+            <input type="text" id="cocktail" placeholder="enter cocktail here">
 
+            <select name="searchtype" id="select">
+                <option value="name">search by name</option>
+                <option value="ingredient">search by ingredient</option>
+                <option value="category">search by category</option>
+                <!-- <option value="glass">search by glass type</option> -->
+                <option value="alcoholic">alcoholic</option>
+                <option value="non-alcoholic">non-alcoholic</option>
+            </select>
+            
+            <input type="submit" value="Submit" onclick="getCocktails()">
+            <!-- <nav> -->
+            <!-- </nav> -->
+        </form>
+
+
+    <div class="text">
+        <p id="lorem">Welcome to my Cocktail recipe site, please use the above to search for any cocktail you would like to make and know that whenever you refresh the site a random cocktail will be provided</p>
+    </div>
+    
     <div class="gridContainer" id="gridContainer">
-    <div class="grid" id="grid">
+        <div class="grid" id="grid">
         </ul>
     </div>
 </div>
