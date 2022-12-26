@@ -33,11 +33,22 @@ function handleData(data) {
     data.drinks.forEach(element => {
         // console.log( Object.values(element).filter(value => value !=null))
         let entries = Object.entries(element)
-
         let nonNUll = entries.filter(item => item[1] != null)
         makeDivs(nonNUll)
 
     });
+}
+
+// used when fetch request only returns a cocktail name and an image, then it makes another fetch request to get full details
+function handleSmallData(data){
+
+data.drinks.forEach(drink =>{
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink.strDrink}`)
+    .then(response => response.json())
+    .then(data => handleData(data))
+    .catch(error => console.error(error))
+    console.log(drink.strDrink)
+})
 }
 
 // ******************************************************MAKE COCKTAIL DIVS*******************************************************************8
@@ -72,12 +83,8 @@ function makeDivs(drink) {
                 && property[0] != "strImageSource" && property[0] != "strImageAttribution" && property[0] != "strCreativeCommonsConfirmed" && property[0] != "dateModified" && property[0] != "strVideo") {
                 listItems.push(`${property[0].replace("str", "")} :<br>  ${property[1]}`)
             }
-
         }
-
-
     })
-
     // joins array items into list elements
     var htmlList = listItems.map(item => {
         //returns items after splitting into seperate lists in order to use multiple colours
@@ -110,13 +117,13 @@ if (search === 'name') {
 if (search === 'ingredient') {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktail}`)
     .then(response => response.json())
-    .then(data => handleData(data))
+    .then(data =>handleSmallData(data))
     .catch(error => console.error(error))
 }
 if (search === 'category') {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${cocktail}`)
     .then(response => response.json())
-    .then(data => handleData(data))
+    .then(data => handleSmallData(data))
     .catch(error => console.error(error))
 }
 if (search === 'glass') {
@@ -128,13 +135,13 @@ if (search === 'glass') {
 if (search === 'alcoholic') {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`)
     .then(response => response.json())
-    .then(data => handleData(data))
+    .then(data => handleSmallData(data))
     .catch(error => console.error(error))
 }
 if (search === 'non-alcoholic') {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`)
     .then(response => response.json())
-    .then(data => handleData(data))
+    .then(data => handleSmallData(data))
     .catch(error => console.error(error))
 }   
 
