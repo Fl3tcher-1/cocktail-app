@@ -4,7 +4,7 @@ body{
 }
 
 
-h2{
+h2, h3{
     color: rgb(127, 255, 212);
     text-align: center;
     margin: 0;
@@ -34,6 +34,7 @@ nav{
 .home:hover, .info:hover, .profile:hover, .contact:hover{
     transform: scale(1.1);
    font-size: larger;
+   content: auto;
 }
 
 
@@ -41,6 +42,7 @@ nav{
 #cocktails{
     display: flex;
     justify-content: center;
+    gap: 1px;
     /* gap: 5px; */
     z-index: 1;
     margin-top: 0;
@@ -64,12 +66,13 @@ nav{
     color: antiquewhite;
 }
 
+/* search bar text */
 .text{
     color: aliceblue;
     margin-left: 0;
-
 }
 
+/* text below search bar */
 #lorem{
     text-align: center;
 }
@@ -108,6 +111,11 @@ li{
     padding: 3px;
 }
 
+.infoList{
+    text-align: center;
+    color: aliceblue;
+}
+
 
 /* **************************IMAGE***************** */
 img{
@@ -132,4 +140,12 @@ img{
 
 .listItems1{
     color: aquamarine;
+}
+
+/* *************************************************info.html**************************************8 */
+
+p{
+    text-align: center;
+    margin: 10px;
+    color: aliceblue;
 }
