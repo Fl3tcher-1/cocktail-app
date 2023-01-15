@@ -8,22 +8,22 @@
     <title>Home</title>
 </head>
 <body>
-        <nav>
-            <button class="home" onclick="init()">Home</button>
-            <a href="info.html">
-                <button class="info">Info</button>
-            </a>
-            <button class="profile">Profile</button>
-            <a href="contact.html">
-                <button class="contact">Contact</button>
-            </a>
-        </nav>
-
-        <form id="cocktails" action="javascript:void(0)">    
-            <input type="text" id="cocktail" placeholder="enter cocktail here">
-
-            <select name="searchtype" id="select">
-                <option value="name">search by name</option>
+    <nav>
+        <button class="home" onclick="init()">Home</button>
+        <a href="info.html">
+            <button class="info">Info</button>
+        </a>
+        <button class="profile">Profile</button>
+        <a href="contact.html">
+            <button class="contact">Contact</button>
+        </a>
+    </nav>
+    
+    <form id="cocktails" action="javascript:void(0)">    
+        <input type="text" id="cocktail" placeholder="enter cocktail here">
+        
+        <select name="searchtype" id="select">
+            <option value="name">search by name</option>
                 <option value="ingredient">search by ingredient</option>
                 <option value="category">search by category</option>
                 <!-- <option value="glass">search by glass type</option> -->
@@ -33,17 +33,18 @@
             
             <input type="submit" value="Submit" onclick="getCocktails()">
         </form>
-
-
-    <div class="text">
-        <p id="lorem">Welcome to my Cocktail recipe site, please use the above to search for any cocktail you would like to make and know that whenever you refresh the site a random cocktail will be provided</p>
+        
+        
+        <div class="welcome">
+            <p id="welcome">Welcome to my Cocktail recipe site, please use the above to search for any cocktail you would like to make and know that whenever you refresh the site a random cocktail will be provided</p>
+        </div>
+        
+        <div class="gridContainer" id="gridContainer">
+            <div class="grid" id="grid">
+            </ul>
+        </div>
+        
     </div>
-    
-    <div class="gridContainer" id="gridContainer">
-        <div class="grid" id="grid">
-        </ul>
-    </div>
-</div>
     <script src="./main.js"></script>
 </body>
 </html>

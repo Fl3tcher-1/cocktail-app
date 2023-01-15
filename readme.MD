@@ -1,3 +1,8 @@
+to run :
+
+1) clone repo
+2) run index.html with live server
+
 This is a personal project that uses JS in order to fetch and consume a public api containing cocktails (api link at the bottom)
 
 on load or refresh the website will return a random cocktail to the user

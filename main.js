@@ -1,5 +1,9 @@
 
-init()
+// console.log(document.URL)
+// checks current document page and if home page gets a cocktail else does not run fetch
+if ( document.URL.includes("index.html")){
+    init()
+}
 
 // ******************************************************INIT*******************************************************************8
 function init() {
@@ -15,11 +19,11 @@ function init() {
 //remove existing cocktails
 function removeCocktails() {
     let cocktails = document.getElementsByClassName('gridCocktails')
-    console.log(cocktails)
+    // console.log(cocktails)
     if (cocktails.length !== 0) {
-        console.log(cocktails.item(0))
+        // console.log(cocktails.item(0))
         for (let i = 0; i < cocktails.length;) {
-            console.log(cocktails.length)
+            // console.log(cocktails.length)
             cocktails.item(0).remove()
         }
 
@@ -28,13 +32,20 @@ function removeCocktails() {
 
 // ******************************************************HANDLE DATA*******************************************************************
 function handleData(data) {
-    //for every element get the key:value pairs and only return pairs with no null values
-    data.drinks.forEach(element => {
-        // console.log( Object.values(element).filter(value => value !=null))
-        let entries = Object.entries(element)
-        let nonNUll = entries.filter(item => item[1] != null)
-        makeDivs(nonNUll)
-    });
+
+    //if data has no null values, create divs on page, else repopulate homepage
+    if ( !checkNUll(data)){
+        //for every element get the key:value pairs and only return pairs with no null values
+        data.drinks.forEach(element => {
+            // console.log( Object.values(element).filter(value => value !=null))
+            let entries = Object.entries(element)
+            let nonNUll = entries.filter(item => item[1] != null)
+            makeDivs(nonNUll)
+        });
+    } else{
+        alert('no results found')
+        init()
+    }
 }
 
 // used when fetch request only returns a cocktail name and an image, then it makes another fetch request to get full details
@@ -46,7 +57,7 @@ data.drinks.forEach(drink =>{
     .then(response => response.json())
     .then(data => handleData(data))
     .catch(error => console.error(error))
-    console.log(drink.strDrink)
+    // console.log(drink.strDrink)
 })
 }
 
@@ -92,8 +103,8 @@ function makeDivs(drink) {
 
     list.innerHTML = htmlList
 
-    div.appendChild(list)
-    container.appendChild(div)
+        div.appendChild(list)
+        container.appendChild(div)
 
 }
 
@@ -101,49 +112,56 @@ function makeDivs(drink) {
 //fetches data from an api and sends to a function when all data is fetched
 function getCocktails(cocktail) {
 
-    removeCocktails()
-    let search = searchType()
-    cocktail = document.getElementById('cocktail').value
+removeCocktails()
+let search = searchType()
+cocktail = document.getElementById('cocktail').value
 
-    console.log(search)
+if ( cocktail === ""){
+    alert("please enter a valid search value")
+    init() 
+}
 
-if (search === 'name') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
-    .then(response => response.json())
-    .then(data => handleData(data))
-    .catch(error => console.error(error))
+// if a search value provided, use corresponsing api call to get desired data
+if (cocktail != ""){
+    if (search === 'name') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${cocktail}`)
+        .then(response => response.json())
+        .then(data => handleData(data))
+        .catch(error => console.error(error))
+    }
+    if (search === 'ingredient') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktail}`)
+        .then(response => response.json())
+        .then(data =>handleSmallData(data))
+        .catch(error => console.error(error))
+    }
+    if (search === 'category') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${cocktail}`)
+        .then(response => response.json())
+        .then(data => handleSmallData(data))
+        .catch(error => console.error(error))
+    }
+    if (search === 'glass') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${cocktail}`)
+        .then(response => response.json())
+        .then(data => handleData(data))
+        .catch(error => console.error(error))
+    }
+    if (search === 'alcoholic') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`)
+        .then(response => response.json())
+        .then(data => handleSmallData(data))
+        .catch(error => console.error(error))
+    }
+    if (search === 'non-alcoholic') {
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`)
+        .then(response => response.json())
+        .then(data => handleSmallData(data))
+        .catch(error => console.error(error))
+    }   
+        document.getElementById('cocktail').value = ""
+
 }
-if (search === 'ingredient') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${cocktail}`)
-    .then(response => response.json())
-    .then(data =>handleSmallData(data))
-    .catch(error => console.error(error))
-}
-if (search === 'category') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${cocktail}`)
-    .then(response => response.json())
-    .then(data => handleSmallData(data))
-    .catch(error => console.error(error))
-}
-if (search === 'glass') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=${cocktail}`)
-    .then(response => response.json())
-    .then(data => handleData(data))
-    .catch(error => console.error(error))
-}
-if (search === 'alcoholic') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`)
-    .then(response => response.json())
-    .then(data => handleSmallData(data))
-    .catch(error => console.error(error))
-}
-if (search === 'non-alcoholic') {
-    fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`)
-    .then(response => response.json())
-    .then(data => handleSmallData(data))
-    .catch(error => console.error(error))
-}   
-    document.getElementById('cocktail').value = ""
 }
 
 // ******************************************************GET SEARCH TYPE*******************************************************************8
@@ -154,20 +172,17 @@ function searchType() {
 
 // ******************************************************SCROLL BLUR*******************************************************************8
 var timer
+var elements = document.getElementById('gridContainer')
+
+if (elements !== null){
 // when the user scrolls it blurs the screen, on 100ms of scroll release it unblurs
-window.addEventListener("scroll", (e) => {
+    window.addEventListener("scroll", (e) => {
     clearTimeout(timer)
 
-    var elements = document.getElementById('gridContainer')
-
     // console.log(elements.children['grid'].children)
-
     for (let i = 0; i < elements.children['grid'].children.length; i++) {
         elements.children['grid'].children[i].children[2].style.filter = 'blur(3px)'
     }
-
-    // elements.style.height = "100px"
-    // elements.style.filter = 'blur(3px)'
 
     timer = setTimeout(function () {
         for (let i = 0; i < elements.children['grid'].children.length; i++) {
@@ -176,8 +191,15 @@ window.addEventListener("scroll", (e) => {
         // elements.style.filter = 'blur(0px)'
     }, 100)
 
+    })
+}
 
-})
+
+//  checks obj values and returns true if a null is found
+function checkNUll(obj){
+return Object.values(obj).includes(null)
+}
+
 
 
 

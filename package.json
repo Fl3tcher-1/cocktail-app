@@ -1,0 +1,19 @@
+{
+  "name": "cocktail-app",
+  "version": "1.0.0",
+  "description": "This is a personal project that uses JS in order to fetch and consume a public api containing cocktails (api link at the bottom)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fl3tcher-1/cocktail-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fl3tcher-1/cocktail-app/issues"
+  },
+  "homepage": "https://github.com/Fl3tcher-1/cocktail-app#readme"
+}
