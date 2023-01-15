@@ -1,8 +1,10 @@
 body{
     margin: 0;
-    background-color: black;
+    /* background-color: black; */
+    background: url("./images/floor\ background.jpg"), rgba(0, 0, 0, 0.76);
+    background-blend-mode: color-burn;
+    
 }
-
 
 h2, h3{
     color: rgb(127, 255, 212);
@@ -95,6 +97,7 @@ nav{
     max-width: 650px;
     min-width: 300px;
     /* width: 650px; */
+    
 }
 
 .gridCocktails{
@@ -132,6 +135,9 @@ li{
     color: aliceblue;
 }
 
+.listItems2{
+    overflow:hidden;
+}
 
 /* **************************IMAGE***************** */
 img{
@@ -147,13 +153,13 @@ img{
 /* *********************BLUR***************** */
 
 .blur{
-    filter: blur(10px);
+    filter: blur(5px);
 }
 
 .list{
     /* height: 10%; */
     filter: blur(0px);
-    transition: filter 0.25s;
+    transition: filter 0.2s;
 }
 
 .listItems1{
