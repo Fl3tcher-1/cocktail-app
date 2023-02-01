@@ -3,6 +3,7 @@ body{
     /* background-color: black; */
     background: url("./images/floor\ background.jpg"), rgba(0, 0, 0, 0.76);
     background-blend-mode: color-burn;
+    color:rgb(178, 219, 206);
     
 }
 
@@ -15,7 +16,7 @@ h2, h3{
 
 /* ********************************NAV BAR *********************************************8 */
 
-nav{
+.navTop{
     display: flex;
     justify-content: center;
     margin: 10px;
@@ -166,6 +167,25 @@ img{
     color: aquamarine;
 }
 
+/* *********************pagination***************** */
+
+.pagination{
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.page-button{
+    font-size: 20px;
+    padding: 6px;
+    margin: 1px;
+}
+
+.page-button:hover{
+    background-color: white;
+    transform: scale(1.15);
+}
+
+
 /* *************************************************info.html**************************************8 */
 
 .infoContainer{
@@ -203,7 +223,11 @@ p{
     text-align: center;
 }
 
-.cInfo{
+
+
+.bottomContact{
     text-align: center;
+    position: absolute;
+    bottom: 3%;
     width: 50%;
 }

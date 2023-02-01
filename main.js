@@ -1,9 +1,17 @@
-
 // console.log(document.URL)
+// if(!document.URL.includes("index.html")&& !document.URL.includes("contact.html")&& !document.URL.includes("info.html")){
+//     window.location.href = "404.html"
+// }
 // checks current document page and if home page gets a cocktail else does not run fetch
+let paginationDivs =[]
 if ( document.URL.includes("index.html")){
     init()
 }
+
+// pagination init
+let totalDrinkNumber
+let itemsPerPage = 5
+let currentPage =1
 
 // ******************************************************INIT*******************************************************************8
 function init() {
@@ -18,6 +26,11 @@ function init() {
 // ******************************************************REMOVE DRINKS*******************************************************************8
 //remove existing cocktails
 function removeCocktails() {
+    paginationDivs =[]
+    document.querySelector('.pagination').innerHTML =""
+
+    console.log("removing")
+
     let cocktails = document.getElementsByClassName('gridCocktails')
     // console.log(cocktails)
     if (cocktails.length !== 0) {
@@ -32,15 +45,20 @@ function removeCocktails() {
 
 // ******************************************************HANDLE DATA*******************************************************************
 function handleData(data) {
-
+    // paginationDivs =[]
     //if data has no null values, create divs on page, else repopulate homepage
     if ( !checkNUll(data)){
+        totalDrinkNumber = data.drinks.length
         //for every element get the key:value pairs and only return pairs with no null values
         data.drinks.forEach(element => {
             // console.log( Object.values(element).filter(value => value !=null))
             let entries = Object.entries(element)
             let nonNUll = entries.filter(item => item[1] != null)
             makeDivs(nonNUll)
+            // drinkAmount --
+            // if (drinkAmount ==0){
+            //     PopulatePages()
+            // }
         });
     } else{
         alert('no results found')
@@ -50,6 +68,7 @@ function handleData(data) {
 
 // used when fetch request only returns a cocktail name and an image, then it makes another fetch request to get full details
 function handleSmallData(data){
+    paginationDivs =[]
 
 // goes through data and fetches full data for every cocktail
 data.drinks.forEach(drink =>{
@@ -64,8 +83,9 @@ data.drinks.forEach(drink =>{
 // ******************************************************MAKE COCKTAIL DIVS*******************************************************************8
 
 function makeDivs(drink) {
+    // paginationDivs =[]
     let listItems = []
-    let container = document.getElementById('grid')
+    // let container = document.getElementById('grid')
     let div = document.createElement('div')
     div.className = "gridCocktails"
 
@@ -105,9 +125,81 @@ function makeDivs(drink) {
     list.innerHTML = htmlList
 
         div.appendChild(list)
-        container.appendChild(div)
+        // container.appendChild(div)
+        paginationDivs.push(div)
+
+        // once all drink divs have been added to array
+        // console.log(totalDrinkNumber, paginationDivs.length)
+        if(paginationDivs.length == totalDrinkNumber || totalDrinkNumber ==1){
+            displayItems(paginationDivs)
+        }
+        // send created populated grids into pagination
 
 }
+
+// ******************************************************PAGINATION*******************************************************************8
+
+function displayItems(data ){
+    // container to store cocktails
+    let container = document.getElementById('grid')
+    // page counts and data
+    let totalPages = Math.ceil(data.length/ itemsPerPage)
+    
+    let items =[]
+    
+    // 1st item to be displayed
+    let startIndex = (currentPage-1) *itemsPerPage
+    // last item to be displayed on page
+    let lastIndex = startIndex +itemsPerPage
+    // slice data to only show selected indexes
+    items = data.slice(startIndex, lastIndex)
+    // console.log({startIndex}, {lastIndex}, items)
+
+    // removes existing cocktails otherwise it will add on top of the dom without removing all items from array
+    let existingCocktails =document.querySelectorAll('.gridCocktails')
+    existingCocktails.forEach(cocktail=>{
+        cocktail.remove()
+    })
+    
+    items.forEach(cocktail =>{
+        // console.log(cocktail.children[0])
+        container.appendChild(cocktail)
+    })
+    populatePageNumbers(totalPages)
+    items = []
+    
+}
+
+function populatePageNumbers(totalPages){
+    document.querySelector('.pagination').innerHTML = ""
+    
+    for (let i=1; i <=totalPages; i ++){
+        document.querySelector('.pagination').innerHTML += `<button class ="page-button">${i}</button>`
+    }
+    currentPageBtn()
+}
+
+function currentPageBtn(){
+    let pageNums = document.getElementsByClassName('pagination')[0].childNodes
+
+    pageNums.forEach(btn =>{
+        if(btn.innerHTML == currentPage){
+            btn.style.opacity =1
+        } else{
+            btn.style.opacity = 0.6
+        }
+    })
+   
+}
+// ads a continuos listener for clicking page numbers
+document.querySelector('.pagination').addEventListener("click", e=>{
+    window.scrollTo(0,0)
+    if(e.target.classList.contains("page-button")){
+        currentPage = Number(e.target.textContent)
+        displayItems(paginationDivs,itemsPerPage, currentPage)
+    }
+})
+
 
 // ******************************************************FETCH DATA*******************************************************************8
 //fetches data from an api and sends to a function when all data is fetched
@@ -194,7 +286,6 @@ if (elements !== null){
 
     })
 }
-
 
 //  checks obj values and returns true if a null is found
 function checkNUll(obj){

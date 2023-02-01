@@ -1,0 +1,11 @@
+body{
+background-color: black;
+}
+
+.error404{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
