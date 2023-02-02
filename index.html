@@ -8,6 +8,7 @@
     <title>Home</title>
 </head>
 <body>
+    <!-- navigation -->
     <nav class="navTop">
         <button class="home" onclick="init()">Home</button>
         <a href="info.html">
@@ -19,45 +20,38 @@
         </a>
     </nav>
     
+    <!-- search form header -->
     <form id="cocktails" action="javascript:void(0)">    
         <input type="text" id="cocktail" placeholder="enter cocktail here">
         
+        <!--  select search parameters-->
         <select name="searchtype" id="select">
             <option value="name">search by name</option>
                 <option value="ingredient">search by ingredient</option>
                 <option value="category">search by category</option>
-                <!-- <option value="glass">search by glass type</option> -->
                 <option value="alcoholic">alcoholic</option>
                 <option value="non-alcoholic">non-alcoholic</option>
             </select>
-            
+
+            <!-- select which measures to use -->
+        <select name="measurements" id="measurements">
+            <option value="imperial">imperial</option>
+            <option value="metric">metric</option>
+        </select>
+        
             <input type="submit" value="Submit" onclick="getCocktails()">
         </form>
         
-        
+        <!-- welcome message -->
         <div class="welcome">
             <p id="welcome">Welcome to my Cocktail recipe site, please use the above to search for any cocktail you would like to make and know that whenever you refresh the site a random cocktail will be provided</p>
         </div>
         
+        <!-- cocktail container -->
         <div class="gridContainer" id="gridContainer">
             <div class="grid" id="grid" aria-live="polite">
 
         </div>
-
-        
-        <!-- <nav class="pagination-container">
-            <button class="pagination-button" id="prev-button" title="previous page" aria-label="previous page">
-                &lt;
-            </button>
-            
-            <div id="pagination-numbers">
-                
-            </div>
-            
-            <button class="pagination-button" id="next-button" title="next page" aria-label="next page">
-                &gt;
-            </button>
-        </nav> -->
         
     </div>
     <nav class="pagination"></nav>
