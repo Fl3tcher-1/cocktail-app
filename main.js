@@ -179,7 +179,7 @@ function makeDivs(drink) {
             //checks for categories to ignore
             if (property[0] !== "strInstructionsDE" && property[0] !== "strInstructionsIE" && property[0] != "strInstructionsIT" && property[0] != "idDrink" && property[0] != "strDrink"
                 && property[0] != "strImageSource" && property[0] != "strImageAttribution" && property[0] != "strCreativeCommonsConfirmed" && property[0] != "dateModified" && property[0] != "strVideo"
-                && property[0] != "InstructionsES") {
+                && !property[0].includes("InstructionsES") && property) {
 
                 listItems.push(`${property[0].replace("str", "")} :<br> ${property[1]}`)
             }
