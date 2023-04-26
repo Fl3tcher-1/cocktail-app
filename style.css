@@ -1,7 +1,10 @@
 body{
     margin: 0;
     /* background-color: black; */
-    background: url("./images/floor\ background.jpg"), rgba(0, 0, 0, 0.76);
+    background: url("./images/floor\ background.jpg"), rgba(0, 0, 0, 0.36);
+    /* below does not work on laptop screen? too dark */
+    /* background: url("./images/floor\ background.jpg"), rgba(0, 0, 0, 0.76); */
+
     background-blend-mode: color-burn;
     color:rgb(178, 219, 206);
     
@@ -154,7 +157,7 @@ img{
 /* *********************BLUR***************** */
 
 .blur{
-    filter: blur(5px);
+    filter: blur(2px);
 }
 
 .list{

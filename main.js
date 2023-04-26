@@ -57,8 +57,9 @@ removeCocktails()
 let search = searchType()
 measure = measureType()
 cocktail = document.getElementById('cocktail').value
+console.log(search == "non-alcoholic")
 
-if ( cocktail === ""){
+if ( cocktail === "" && (search !="alcoholic" && search!= "non-alcoholic")){
     alert("please enter a valid search value")
     init() 
 }
@@ -89,20 +90,23 @@ if (cocktail != ""){
         .then(data => handleData(data))
         .catch(error => console.error(error))
     }
+    document.getElementById('cocktail').value = ""
+    
+} else{
     if (search === 'alcoholic') {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic`)
         .then(response => response.json())
         .then(data => handleSmallData(data))
         .catch(error => console.error(error))
     }
-    if (search === 'non-alcoholic') {
+    if (search == "non-alcoholic") {
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic`)
         .then(response => response.json())
         .then(data => handleSmallData(data))
         .catch(error => console.error(error))
     }   
-        document.getElementById('cocktail').value = ""
 
+    document.getElementById('cocktail').value = ""
 }
 }
 
@@ -181,6 +185,7 @@ function makeDivs(drink) {
                 && property[0] != "strImageSource" && property[0] != "strImageAttribution" && property[0] != "strCreativeCommonsConfirmed" && property[0] != "dateModified" && property[0] != "strVideo"
                 && !property[0].includes("InstructionsES") && property) {
 
+                    // console.log(`${property[0].replace("str", "")} :<br> ${property[1]}`)
                 listItems.push(`${property[0].replace("str", "")} :<br> ${property[1]}`)
             }
         }
@@ -193,9 +198,12 @@ function makeDivs(drink) {
     // console.log(listItems)
     // joins array items into list elements
     var htmlList = listItems.map(item => {
+        
+        // console.log(item)
         // console.log(item, item.length)
         // checks for empty list header
         if(item.length >16){
+            // console.log(item.split("<br>")[0])
             return '<li class="listItems1">' + item.split("<br>")[0] + '</li> <li class="listItems2">' + item.split("<br>")[1] + '</li>'
         }
         //returns items after splitting into seperate lists in order to use multiple colours
@@ -206,6 +214,7 @@ function makeDivs(drink) {
         div.appendChild(list)
         // container.appendChild(div)
         paginationDivs.push(div)
+        // console.log(div)
 
         // once all drink divs have been added to array
         // console.log(totalDrinkNumber, paginationDivs.length)
@@ -218,7 +227,6 @@ function makeDivs(drink) {
 
 // convert imperial measures to metric
 function metricConversion(data){
-
     for (let i =0; i <data.length; i ++){
         let measures =[]
         let measureVal 
@@ -261,9 +269,7 @@ function metricConversion(data){
             data[i] = `${measureVal} :<br>  ${measures}`
         }
     }
-
-
-   
+ 
 }
 
 // joins ingredients with measures into string arrays
@@ -272,6 +278,8 @@ function joinIngredientMeasures(data){
     let measures = []
     let combined = []
     for(let i=0; i <data.length; i++){
+        // console.log(i, data[i],)
+        // console.log(data[i], i)
         if(data[i].includes("Ingredient")){
             ingredients.push(data[i])
         }
@@ -281,8 +289,18 @@ function joinIngredientMeasures(data){
     }
     
     for(let i=0; i<ingredients.length;i++){
-        if(i > measures.length ){
-            console.log(ingredients[i])
+        // console.log("ingredient",i, "measures", measures.length, measures)
+         if(i > measures.length ){ // when there are more ingredients than measures
+
+            let ingredientSubstr = ingredients[i].split(" ")
+            combined.push(ingredientSubstr[0] + ingredientSubstr[1] + ingredientSubstr.slice(2).join(" ") )
+
+         }else if(i== measures.length){ // when same amount of ingredients and measures
+            // console.log(measures[index], measures[i], measures[i-1])
+            let ingredientSubstr = ingredients[i].split(" ")
+            // console.log(ingredientSubstr,measuresSubstr, "slice", measuresSubstr.slice(2))
+            combined.push(ingredientSubstr[0] + ingredientSubstr[1] + ingredientSubstr.slice(2).join(" ") )
+        
         } else{
             let ingredientSubstr = ingredients[i].split(" ")
             let measuresSubstr = measures[i].trim().split(" ")
@@ -299,6 +317,7 @@ function join(data, joinedData){
 
     // loops through data and joins ingredients with measures
     for(let i=0; i <data.length; i ++){
+        // console.log(data[i],i, data.length)
         if(data[i].includes("Ingredient")){
             // finds ingredient number and uses corresponding index from joined arr
             let number = data[i].match(/\d/)
@@ -316,6 +335,7 @@ function join(data, joinedData){
 
 // add elements to dom
 function displayItems(data ){
+    // console.log(data)
     // container to store cocktails
     let container = document.getElementById('grid')
     // page counts and data
@@ -391,7 +411,7 @@ if (elements !== null){
 
     // console.log(elements.children['grid'].children)
     for (let i = 0; i < elements.children['grid'].children.length; i++) {
-        elements.children['grid'].children[i].children[2].style.filter = 'blur(3px)'
+        elements.children['grid'].children[i].children[2].style.filter = 'blur(2px)'
     }
 
     timer = setTimeout(function () {
