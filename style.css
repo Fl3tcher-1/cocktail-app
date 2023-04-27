@@ -191,13 +191,46 @@ img{
 
 /* *************************************************info.html**************************************8 */
 
-.infoContainer{
+.infoContainer, #about{
     display: flex;
     flex-direction: column;
-    /* max-width: 50%; */
     justify-content: center;
+    align-items:center ;
+    /* justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 5px; */
+    /* margin-left: -65%; */
+    
+}
+
+.infoButtons{
+    /* font-size: 5px; */
+    display: flex;
+    flex-direction: column;
+    float: left;
+    margin-left: 15%;
+    margin-right: -25%;
+    padding: 0;
+    position: sticky;
+    top: 0px;
+}
+
+
+/* changes button sizes and text sizes on small screens */
+@media (max-width: 480px) {
+    .infoButtons{
+        margin-left: 5px;
+        width: 70px;   
+    }
+    #about,#keyTermsSection, #bartendingTools, #bestPractises,#typesOfAlcohol{
+        font-size: 10px;
+        margin: 0;
+    }
+    button{
+    font-size: 11px;
+    font-weight:550;
+    }
 }
 
 p{
@@ -211,6 +244,21 @@ p{
     width: 50%;
     /* width: 50%; */
 }
+
+/* hides and unhides different sections */
+#about,#keyTermsSection, #bartendingTools, #bestPractises,#typesOfAlcohol{
+    display: none;
+}
+#keyTermsSection.active, #bartendingTools.active,#bestPractises.active,#typesOfAlcohol.active{
+    display: block;
+}
+
+#about.active{
+    display: flex;
+}
+
+
+
 
 
 /* *************************************************contact.html**************************************8 */

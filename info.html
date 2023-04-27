@@ -20,7 +20,17 @@
     </nav>
     <br>
 
-    <div class="infoContainer">
+ <!-- <div class="infoContainer"> -->
+    <!-- shows and hides different divs based on which button clicked -->
+    <div class="infoButtons"> 
+        <button onclick="ShowSection('about')">About</button>
+        <button onclick="ShowSection('keyTermsSection')">Key Terms</button>
+        <button onclick="ShowSection('bartendingTools')">Bartending Tools</button>
+        <button onclick="ShowSection('bestPractises')">Best Practises</button>
+        <button onclick="ShowSection('typesOfAlcohol')">Types of alcohol</button>
+    </div>
+
+    <div id="about" class="active">
     <h2> about</h2>
     <p class="pinfo">
         I have been working at busy London bars and pubs since middle of 2019 and wish to compile a list of 
@@ -48,8 +58,6 @@
         *please be explicit for the ingredient you are searhcing for otherwise you may get unexpected results
         e.g. search for "blue curacao" instead of "blue" or "curacao" for those options are an incomplete ingredient*
     </p>
-    <!-- <ol class="infoList"> -->
-    <!-- spirit type: -->
     
      <li class="infoList">spirit type:</li>
         <li class="infoList">gin</li>
@@ -58,12 +66,10 @@
         <li class="infoList">rum</li>
         <li class="infoList">tequila</li>
         <br>
-     <!-- fruit: -->
         <li class="infoList">fruit:</li>
         <li class="infoList">banana</li>
         <li class="infoList">orange</li>
         <li class="infoList">apple</li>
-    <!-- </ol> -->
     <br>
     <h2>search by category</h2>
     <p class="pinfo">this refers to the category the drink is in--- cocktail, beer ordinary</p>
@@ -72,162 +78,186 @@
     <h2>search by alcoholic</h2>
     <p class="pinfo"> currently you are not able to search for a specific non-alcoholic cocktail--- this will simply return all alcoholic or non alcoholic drinks</p>
     <br>
+     </div>
+   
 
-    <h2>bartending key terms</h2>
-    <li class="infoList">jigger:</li>
-    <li class="infoList">freepour:</li>
-    <li class="infoList">garnish:</li>
-    <li class="infoList">muddle:</li>
-    <li class="infoList">shaken:</li>
-    <li class="infoList">strirred:</li>
-    <li class="infoList">rolled:</li>
-    <li class="infoList">neat:</li>
-    <li class="infoList">on the rocks:</li>
-    <li class="infoList">barback:</li>
-    <li class="infoList">chaser:</li>
-    <li class="infoList">shaken:</li>
-    <li class="infoList">mixologist:</li>
-    <li class="infoList">cobbler:</li>
-    <li class="infoList">boston shaker:</li>
-    <li class="infoList">strainer:</li>
-    <li class="infoList">sommelier:</li>
-    <li class="infoList">cellar:</li>
-    <li class="infoList">highball:</li>
+    <div id="keyTermsSection" >
+        <h2>bartending key terms</h2>
+        <li class="infoList">jigger:</li>
+        <li class="infoList">freepour:</li>
+        <li class="infoList">garnish:</li>
+        <li class="infoList">muddle:</li>
+        <li class="infoList">shaken:</li>
+        <li class="infoList">strirred:</li>
+        <li class="infoList">rolled:</li>
+        <li class="infoList">neat:</li>
+        <li class="infoList">on the rocks:</li>
+        <li class="infoList">barback:</li>
+        <li class="infoList">chaser:</li>
+        <li class="infoList">shaken:</li>
+        <li class="infoList">mixologist:</li>
+        <li class="infoList">cobbler:</li>
+        <li class="infoList">boston shaker:</li>
+        <li class="infoList">strainer:</li>
+        <li class="infoList">sommelier:</li>
+        <li class="infoList">cellar:</li>
+        <li class="infoList">highball:</li>
+        
+        <li class="infoList">pint:</li>
+        <li class="infoList">top up:</li>
+        <li class="infoList">lager:</li>
+        <li class="infoList">shandy:</li>
+        <li class="infoList">cask ale:</li>
+        <li class="infoList">bitter:</li>
+        <li class="infoList">stout:</li>
+        <li class="infoList">real ale:</li>
+        <li class="infoList">cider:</li>
+        <li class="infoList">pimms cup:</li>
+
+    </div>
+    <!-- <br> -->
+    <div id="bartendingTools">
+        <h2>bartending essential tools</h2>
+        <li class="infoList">jigger:</li>
+        <li class="infoList">muddler:</li>
+        <li class="infoList">bottle opener/corkscrew:</li>
+        <li class="infoList">boston/cobbler shaker:</li>
+        <li class="infoList">knife:</li>
+        <li class="infoList">ice bin:</li>
+        <li class="infoList">speed pourers:</li>
+        <li class="infoList">strainer:</li>
+        <li class="infoList">ice scoop:</li>
+        <li class="infoList">peeler:</li>
+        <li class="infoList">glassware:</li>
+        <li class="infoList">bar spoon:</li>
+
+    </div>
+    <!-- <br> -->
     
-    <li class="infoList">pint:</li>
-    <li class="infoList">top up:</li>
-    <li class="infoList">lager:</li>
-    <li class="infoList">shandy:</li>
-    <li class="infoList">cask ale:</li>
-    <li class="infoList">bitter:</li>
-    <li class="infoList">stout:</li>
-    <li class="infoList">real ale:</li>
-    <li class="infoList">cider:</li>
-    <li class="infoList">pimms cup:</li>
+    <div id="bestPractises">
+        <h2>best practises</h2>
+        <li class="infoList">clean as you go:</li>
+        <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
+        <li class="infoList">put everything back where you got it:</li>
+        <li class="infoList">throw it away, dont leave it:</li>
+        <li class="infoList">learn your products and try them to know what to recommend:</li>
+        <li class="infoList">pour at 45 degrees:</li>
+        <li class="infoList">dont let beer tap touch the drink itself-- hygiene:</li>
+        <li class="infoList">let the guinness settle, make a cup of tea in the meantime:</li>
+        <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
+        <li class="infoList">be friendly:</li>
+        <li class="infoList">know where your products are stocked at the bar and in the cellar:</li>
+        <li class="infoList">if you dont have a barback or dedicated person to get stock/ice do it yourself:</li>
+        <li class="infoList">if you're walking around the floor pick up some glasses:</li>
+        <li class="infoList">follow pouring standards in premises (free-pour/measured):</li>
+        <li class="infoList">know id check policy for your countryand premises:</li>
+        <li class="infoList">remember when last orders are due:</li>
+        <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
+    </div>
+    <!-- <br> -->
+    <div id="typesOfAlcohol">
+        <h2>types of alcohol</h2>
+        <div class="alcoholType">
+            <br>
+            <h3>beers /ciders</h3>
+            <li class="infoList">lager:</li>
+            <li class="infoList">ipa:</li>
+            <li class="infoList">pilsner:</li>
+            <li class="infoList">wheat beer:</li>
+            <li class="infoList">porter:</li>
+            <li class="infoList">shandy:</li>
+            <li class="infoList">cask ale:</li>
+            <li class="infoList">ale:</li>
+            <li class="infoList">bitter:</li>
+            <li class="infoList">stout:</li>
+            <li class="infoList">real ale:</li>
+        
+            <li class="infoList">cider:</li>
+            <li class="infoList">sparkling cider:</li>
+            <br>
+        </div>
+        
+        <div class="alcoholType">
+            <h3>spirits</h3>
+            <li class="infoList">vodka:</li>
+            <li class="infoList">gin:</li>
+            <li class="infoList">tequila:</li>
+            <li class="infoList">rum:</li>
+            <li class="infoList">whisky:</li>
+            <li class="infoList">brandy:</li>
+            <li class="infoList">mezcal:</li>
+            <h3> not common:</h3>
+           
+            <li class="infoList">absinthe:</li>
+            <li class="infoList">pisco:</li>
+            <li class="infoList">shochu:</li>
+            <br>
+    
+        </div>
 
-    <br>
+        <div class="alcoholType">
+            <h3>wines</h3>
+            <li class="infoList">red wine:</li>
+            <li class="infoList">white wine:</li>
+            <li class="infoList">dessert/rose wine:</li>
+            <li class="infoList">sparkling wine:</li>
+            <li class="infoList">fortified wine:</li>
+            <br>
+        
 
-    <h2>bartending essesntial tools</h2>
-    <li class="infoList">jigger:</li>
-    <li class="infoList">muddler:</li>
-    <li class="infoList">bottle opener/corkscrew:</li>
-    <li class="infoList">boston/cobbler shaker:</li>
-    <li class="infoList">knife:</li>
-    <li class="infoList">ice bin:</li>
-    <li class="infoList">speed pourers:</li>
-    <li class="infoList">strainer:</li>
-    <li class="infoList">ice scoop:</li>
-    <li class="infoList">peeler:</li>
-    <li class="infoList">glassware:</li>
-    <li class="infoList">bar spoon:</li>
+        </div>
+        <h3>cocktails</h3>
+        <li class="infoList">classic cocktails:</li>
+        <li class="infoList">sour cocktails:</li>
+        <li class="infoList">tiki cocktails:</li>
+        <li class="infoList">highball cocktail:</li>
+        <li class="infoList">long drink:</li>
+        <li class="infoList">lowball cocktails:</li>
+        <li class="infoList">frozen cocktails:</li>
+        <li class="infoList">hot cocktails:</li>
+        <li class="infoList">shot:</li>
+        <br>
+    
+        <h3>liquers</h3>
 
-    <br>
+        <h3>liquers used in most bars:</h3>
+        <li class="infoList">cream liquers:</li>
+        <li class="infoList">coffee liquers:</li>
+        <li class="infoList">citrus liquers:</li>
 
-    <h2>best practises</h2>
-    <li class="infoList">clean as you go:</li>
-    <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
-    <li class="infoList">put everything back where you got it:</li>
-    <li class="infoList">throw it away, dont leave it:</li>
-    <li class="infoList">learn your products and try them to know what to recommend:</li>
-    <li class="infoList">pour at 45 degrees:</li>
-    <li class="infoList">dont let beer tap touch the drink itself-- hygiene:</li>
-    <li class="infoList">let the guinness settle, make a cup of tea in the meantime:</li>
-    <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
-    <li class="infoList">be friendly:</li>
-    <li class="infoList">know where your products are stocked at the bar and in the cellar:</li>
-    <li class="infoList">if you dont have a barback or dedicated person to get stock/ice do it yourself:</li>
-    <li class="infoList">if you're walking around the floor pick up some glasses:</li>
-    <li class="infoList">follow pouring standards in premises (free-pour/measured):</li>
-    <li class="infoList">know id check policy for your countryand premises:</li>
-    <li class="infoList">remember when last orders are due:</li>
-    <li class="infoList">NEVER USE GLASS TO SCOOP UP ICE:</li>
-    <br>
+        <h3> more specialised liquers:</h3>
+        <li class="infoList">fruit liquers:</li>
+        <li class="infoList">herb and spice liquers:</li>
+        <li class="infoList">nut liquers:</li>
+        <li class="infoList">chocolate liquers:</li>
+        <li class="infoList">cordials:</li>
+        <br>
+    
+        <h3>fortified wines</h3>
+        <li class="infoList">sherry:</li>
+        <li class="infoList">port:</li>
+        <li class="infoList">vermouth:</li>
 
-    <h2>types of alcohol</h2>
-    <br>
-    <h3>beers /ciders</h3>
-    <li class="infoList">lager:</li>
-    <li class="infoList">ipa:</li>
-    <li class="infoList">pilsner:</li>
-    <li class="infoList">wheat beer:</li>
-    <li class="infoList">porter:</li>
-    <li class="infoList">shandy:</li>
-    <li class="infoList">cask ale:</li>
-    <li class="infoList">ale:</li>
-    <li class="infoList">bitter:</li>
-    <li class="infoList">stout:</li>
-    <li class="infoList">real ale:</li>
+        <h3>not common:</h3>
+        <li class="infoList">madeira:</li>
+        <li class="infoList">marsala:</li>
+        <li class="infoList">dubonnet:</li>
+        <li class="infoList">vin santo:</li>
+        <li class="infoList">commandaria:</li>
+        <br>
+    
+        <h3>others</h3>
+        <li class="infoList">hard seltzer:</li>
+        <li class="infoList">sake:</li>
+        <br>
 
-    <li class="infoList">cider:</li>
-    <li class="infoList">sparkling cider:</li>
-    <br>
+    </div>
 
-    <h3>spirits</h3>
-    <li class="infoList">vodka:</li>
-    <li class="infoList">gin:</li>
-    <li class="infoList">tequila:</li>
-    <li class="infoList">rum:</li>
-    <li class="infoList">whisky:</li>
-    <li class="infoList">brandy:</li>
-    <li class="infoList">mezcal:</li>
-    not common:
-    <li class="infoList">absinthe:</li>
-    <li class="infoList">pisco:</li>
-    <li class="infoList">shochu:</li>
-    <br>
-
-    <h3>wines</h3>
-    <li class="infoList">red wine:</li>
-    <li class="infoList">white wine:</li>
-    <li class="infoList">dessert/rose wine:</li>
-    <li class="infoList">sparkling wine:</li>
-    <li class="infoList">fortified wine:</li>
-    <br>
-
-    <h3>cocktails</h3>
-    <li class="infoList">classic cocktails:</li>
-    <li class="infoList">sour cocktails:</li>
-    <li class="infoList">tiki cocktails:</li>
-    <li class="infoList">highball cocktail:</li>
-    <li class="infoList">long drink:</li>
-    <li class="infoList">lowball cocktails:</li>
-    <li class="infoList">frozen cocktails:</li>
-    <li class="infoList">hot cocktails:</li>
-    <li class="infoList">shot:</li>
-    <br>
-
-    <h3>liquers</h3>
-    liquers used in most bars:
-    <li class="infoList">cream liquers:</li>
-    <li class="infoList">coffee liquers:</li>
-    <li class="infoList">citrus liquers:</li>
-    more specialised liquers:
-    <li class="infoList">fruit liquers:</li>
-    <li class="infoList">herb and spice liquers:</li>
-    <li class="infoList">nut liquers:</li>
-    <li class="infoList">chocolate liquers:</li>
-    <li class="infoList">cordials:</li>
-    <br>
-
-    <h3>fortified wines</h3>
-    <li class="infoList">sherry:</li>
-    <li class="infoList">port:</li>
-    <li class="infoList">vermouth:</li>
-    not common:
-    <li class="infoList">madeira:</li>
-    <li class="infoList">marsala:</li>
-    <li class="infoList">dubonnet:</li>
-    <li class="infoList">vin santo:</li>
-    <li class="infoList">commandaria:</li>
-    <br>
-
-    <h3>others</h3>
-    <li class="infoList">hard seltzer:</li>
-    <li class="infoList">sake:</li>
-    <br>
-
-</div>
+<!-- </div> -->
 
     <script src="./main.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>

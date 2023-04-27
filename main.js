@@ -430,6 +430,15 @@ return Object.values(obj).includes(null)
 }
 
 
+function ShowSection(sectionId){
+    console.log(sectionId)
+    document.querySelectorAll('div').forEach(div=>{
+        div.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+}
+
+
 
 
 
